@@ -1,6 +1,6 @@
 import requests
 from flask import Blueprint, jsonify, request
-from app import db
+from . import db
 from app.models import Configuration, Favorite, Pending, Viewed, User
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.utils import admin_required  # Importa 'utils' desde el paquete 'app'
