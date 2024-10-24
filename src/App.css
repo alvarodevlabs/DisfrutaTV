@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000; /* Un valor alto para que se muestre encima de otros elementos */
+}
+
+.navbar {
+  position: relative; /* Esto asegura que el dropdown se posicione correctamente */
+}
