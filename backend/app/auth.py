@@ -6,7 +6,6 @@ from flask_mail import Message
 
 auth_bp = Blueprint('auth', __name__)
 
-# Función para enviar el correo de recuperación de contraseña
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Restablecer contraseña',
@@ -54,7 +53,6 @@ def login():
     })
     return jsonify(access_token=access_token), 200
 
-# Solicitar restablecimiento de contraseña
 @auth_bp.route('/reset-password', methods=['POST'])
 def reset_request():
     data = request.get_json()
@@ -66,7 +64,6 @@ def reset_request():
     
     return jsonify({"message": "Si existe una cuenta con este correo, se ha enviado un enlace para restablecer la contraseña."}), 200
 
-# Verificar el token y permitir al usuario restablecer la contraseña
 @auth_bp.route('/reset-password/<token>', methods=['POST'])
 def reset_token(token):
     user = User.verify_reset_token(token)
@@ -84,10 +81,8 @@ def reset_token(token):
 
     return jsonify({"message": "Tu contraseña ha sido actualizada exitosamente."}), 200
 
-# Logout y bloqueo de token
 @auth_bp.route('/logout', methods=['POST'])
 @jwt_required()
 def logout():
     jti = get_jwt_identity()
-    # Aquí deberías implementar el almacenamiento en la lista negra (blacklist) del jti del token
     return jsonify({"message": "Sesión cerrada exitosamente"}), 200
