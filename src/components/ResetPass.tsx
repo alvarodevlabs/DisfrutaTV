@@ -10,7 +10,7 @@ const ResetPass: React.FC = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/auth/reset-password/${token}`,
+        `https://flask-backend-rx79.onrender.com/auth/reset-password/${token}`,
         {
           method: "POST",
           body: JSON.stringify({ password }),

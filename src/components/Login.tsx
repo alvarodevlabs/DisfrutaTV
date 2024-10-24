@@ -14,11 +14,14 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/auth/login",
+        {
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       if (response.ok && data.access_token) {
         const token = data.access_token;

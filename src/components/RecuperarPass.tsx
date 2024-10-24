@@ -8,7 +8,7 @@ const RecuperarPass: React.FC = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/auth/reset-password",
+        "https://flask-backend-rx79.onrender.com/auth/reset-password",
         {
           method: "POST",
           body: JSON.stringify({ email }),
