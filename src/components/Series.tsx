@@ -18,7 +18,7 @@ const Series: React.FC = () => {
     const fetchSeries = async (page: number) => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/api/series?page=${page}`,
+          `https://flask-backend-rx79.onrender.com/api/series?page=${page}`,
           {
             method: "GET",
             headers: {

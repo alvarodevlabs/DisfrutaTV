@@ -9,7 +9,7 @@ const Logout: React.FC = () => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          await fetch("http://127.0.0.1:5000/auth/logout", {
+          await fetch("https://flask-backend-rx79.onrender.com/auth/logout", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

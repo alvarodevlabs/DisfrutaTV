@@ -21,7 +21,7 @@ const Peliculas: React.FC = () => {
     const fetchMovies = async (page: number) => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/api/movies?page=${page}`,
+          `https://flask-backend-rx79.onrender.com/api/movies?page=${page}`,
           {
             method: "GET",
             headers: {
@@ -54,9 +54,16 @@ const Peliculas: React.FC = () => {
 
         const [favoritesResponse, pendingResponse, viewedResponse] =
           await Promise.all([
-            fetch("http://127.0.0.1:5000/api/user/favorites", { headers }),
-            fetch("http://127.0.0.1:5000/api/user/pending", { headers }),
-            fetch("http://127.0.0.1:5000/api/user/viewed", { headers }),
+            fetch(
+              "https://flask-backend-rx79.onrender.com/api/user/favorites",
+              { headers }
+            ),
+            fetch("https://flask-backend-rx79.onrender.com/api/user/pending", {
+              headers,
+            }),
+            fetch("https://flask-backend-rx79.onrender.com/api/user/viewed", {
+              headers,
+            }),
           ]);
 
         const [favoritesData, pendingData, viewedData] = await Promise.all([
@@ -78,68 +85,86 @@ const Peliculas: React.FC = () => {
   }, [currentPage]);
 
   const addToFavorites = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/add-favorite`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/add-favorite`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setFavorites([...favorites, movieId]);
   };
 
   const removeFromFavorites = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/remove-favorite`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/remove-favorite`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setFavorites(favorites.filter((fav) => fav !== movieId));
   };
 
   const addToPending = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/add-pending`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/add-pending`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setPending([...pending, movieId]);
   };
 
   const removeFromPending = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/remove-pending`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/remove-pending`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setPending(pending.filter((pend) => pend !== movieId));
   };
 
   const addToViewed = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/add-viewed`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/add-viewed`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setViewed([...viewed, movieId]);
   };
 
   const removeFromViewed = async (movieId: number) => {
-    await fetch(`http://127.0.0.1:5000/api/movies/${movieId}/remove-viewed`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    await fetch(
+      `https://flask-backend-rx79.onrender.com/api/movies/${movieId}/remove-viewed`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setViewed(viewed.filter((view) => view !== movieId));
   };
 

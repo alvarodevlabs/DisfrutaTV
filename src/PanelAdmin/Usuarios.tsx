@@ -12,13 +12,16 @@ const Usuarios: React.FC = () => {
   // Función para obtener la lista de usuarios desde el backend
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/users", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/api/users",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error al obtener la lista de usuarios");
@@ -39,7 +42,7 @@ const Usuarios: React.FC = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/users/${userId}`,
+        `https://flask-backend-rx79.onrender.com/api/users/${userId}`,
         {
           method: "DELETE",
           headers: {
@@ -82,7 +85,7 @@ const Usuarios: React.FC = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/users/${editingUser.id}`,
+        `https://flask-backend-rx79.onrender.com/api/users/${editingUser.id}`,
         {
           method: "PUT",
           body: JSON.stringify(userData),
@@ -118,14 +121,17 @@ const Usuarios: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/users", {
-        method: "POST",
-        body: JSON.stringify({ username, email, password }), // Incluir contraseña al crear usuario
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/api/users",
+        {
+          method: "POST",
+          body: JSON.stringify({ username, email, password }), // Incluir contraseña al crear usuario
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       if (response.ok) {
         const newUser = await response.json();

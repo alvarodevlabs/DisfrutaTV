@@ -34,13 +34,16 @@ const Estadisticas: React.FC = () => {
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/statistics", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Asegurarse de enviar el token JWT
-          },
-        });
+        const response = await fetch(
+          "https://flask-backend-rx79.onrender.com/api/statistics",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // Asegurarse de enviar el token JWT
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Error al obtener estadísticas");

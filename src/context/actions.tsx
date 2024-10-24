@@ -2,7 +2,9 @@ import { MovieType, SeriesType } from "./store"; // Correcto si son exportacione
 
 export const fetchMovies = async (dispatch: React.Dispatch<any>) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/movies");
+    const response = await fetch(
+      "https://flask-backend-rx79.onrender.com/api/movies"
+    );
     const data: MovieType[] = await response.json();
     dispatch({ type: "SET_MOVIES", payload: data });
   } catch (error) {
@@ -12,7 +14,9 @@ export const fetchMovies = async (dispatch: React.Dispatch<any>) => {
 
 export const fetchSeries = async (dispatch: React.Dispatch<any>) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/series");
+    const response = await fetch(
+      "https://flask-backend-rx79.onrender.com/api/series"
+    );
     const data: SeriesType[] = await response.json();
     dispatch({ type: "SET_SERIES", payload: data });
   } catch (error) {

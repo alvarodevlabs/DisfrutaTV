@@ -21,13 +21,16 @@ const MiPerfil: React.FC = () => {
           return;
         }
 
-        const response = await fetch("http://127.0.0.1:5000/api/user/profile", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "https://flask-backend-rx79.onrender.com/api/user/profile",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Error al obtener los datos del perfil");
@@ -58,18 +61,21 @@ const MiPerfil: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://127.0.0.1:5000/api/user/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Enviar token JWT
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          ...(password && { password }), // Solo incluir la contraseña si se cambió
-        }),
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/api/user/profile",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Enviar token JWT
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            ...(password && { password }), // Solo incluir la contraseña si se cambió
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error al actualizar el perfil");

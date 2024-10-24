@@ -32,7 +32,7 @@ const Inicio: React.FC = () => {
 
         // Fetch peliculas
         const moviesResponse = await fetch(
-          `http://127.0.0.1:5000/api/movies?page=${currentMoviePage}`,
+          `https://flask-backend-rx79.onrender.com/api/movies?page=${currentMoviePage}`,
           {
             method: "GET",
             headers: {
@@ -51,7 +51,7 @@ const Inicio: React.FC = () => {
 
         // Fetch series
         const seriesResponse = await fetch(
-          `http://127.0.0.1:5000/api/series?page=${currentSeriesPage}`,
+          `https://flask-backend-rx79.onrender.com/api/series?page=${currentSeriesPage}`,
           {
             method: "GET",
             headers: {
@@ -83,8 +83,8 @@ const Inicio: React.FC = () => {
 
   const addToFavorites = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/add-favorite`
-      : `http://127.0.0.1:5000/api/series/${id}/add-favorite`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-favorite`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/add-favorite`;
 
     await fetch(url, {
       method: "POST",
@@ -97,8 +97,8 @@ const Inicio: React.FC = () => {
 
   const addToPending = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/add-pending`
-      : `http://127.0.0.1:5000/api/series/${id}/add-pending`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-pending`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/add-pending`;
 
     await fetch(url, {
       method: "POST",
@@ -111,8 +111,8 @@ const Inicio: React.FC = () => {
 
   const addToViewed = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/add-viewed`
-      : `http://127.0.0.1:5000/api/series/${id}/add-viewed`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-viewed`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/add-viewed`;
 
     await fetch(url, {
       method: "POST",

@@ -31,13 +31,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const fetchProfile = async (token: string) => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/user/profile", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/api/user/profile",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         // Si el token es inválido o ha expirado, eliminarlo
@@ -69,7 +72,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        await fetch("http://127.0.0.1:5000/auth/logout", {
+        await fetch("https://flask-backend-rx79.onrender.com/auth/logout", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

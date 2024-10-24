@@ -119,9 +119,16 @@ const PeliculasDetail: React.FC = () => {
 
         const [favoritesResponse, pendingResponse, viewedResponse] =
           await Promise.all([
-            fetch("http://127.0.0.1:5000/api/user/favorites", { headers }),
-            fetch("http://127.0.0.1:5000/api/user/pending", { headers }),
-            fetch("http://127.0.0.1:5000/api/user/viewed", { headers }),
+            fetch(
+              "https://flask-backend-rx79.onrender.com/api/user/favorites",
+              { headers }
+            ),
+            fetch("https://flask-backend-rx79.onrender.com/api/user/pending", {
+              headers,
+            }),
+            fetch("https://flask-backend-rx79.onrender.com/api/user/viewed", {
+              headers,
+            }),
           ]);
 
         const [favorites, pending, viewed] = await Promise.all([
@@ -182,13 +189,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/add-favorite`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-favorite`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsFavorite(true);
     } catch (error) {
       console.error("Error al agregar a favoritos", error);
@@ -203,13 +213,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/remove-favorite`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-favorite`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsFavorite(false);
     } catch (error) {
       console.error("Error al eliminar de favoritos", error);
@@ -224,13 +237,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/add-pending`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-pending`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsPending(true);
     } catch (error) {
       console.error("Error al agregar a pendientes", error);
@@ -245,13 +261,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/remove-pending`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-pending`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsPending(false);
     } catch (error) {
       console.error("Error al eliminar de pendientes", error);
@@ -266,13 +285,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/add-viewed`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/add-viewed`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsViewed(true);
     } catch (error) {
       console.error("Error al agregar a vistas", error);
@@ -287,13 +309,16 @@ const PeliculasDetail: React.FC = () => {
         return;
       }
 
-      await fetch(`http://127.0.0.1:5000/api/movies/${id}/remove-viewed`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-viewed`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setIsViewed(false);
     } catch (error) {
       console.error("Error al eliminar de vistas", error);

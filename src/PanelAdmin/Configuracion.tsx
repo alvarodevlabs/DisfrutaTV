@@ -19,13 +19,16 @@ const Configuracion: React.FC = () => {
           return;
         }
 
-        const response = await fetch("http://127.0.0.1:5000/api/config", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Enviar token JWT
-          },
-        });
+        const response = await fetch(
+          "https://flask-backend-rx79.onrender.com/api/config",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Enviar token JWT
+            },
+          }
+        );
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -57,16 +60,19 @@ const Configuracion: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://127.0.0.1:5000/api/config", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Enviar token JWT
-        },
-        body: JSON.stringify({
-          themdb_api_key: themdbApiKey,
-        }),
-      });
+      const response = await fetch(
+        "https://flask-backend-rx79.onrender.com/api/config",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Enviar token JWT
+          },
+          body: JSON.stringify({
+            themdb_api_key: themdbApiKey,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

@@ -33,7 +33,7 @@ const MiContenido: React.FC = () => {
       try {
         // Obtener favoritos
         const favoritesResponse = await fetch(
-          "http://127.0.0.1:5000/api/user/favorites",
+          "https://flask-backend-rx79.onrender.com/api/user/favorites",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +45,7 @@ const MiContenido: React.FC = () => {
 
         // Obtener pendientes
         const pendingResponse = await fetch(
-          "http://127.0.0.1:5000/api/user/pending",
+          "https://flask-backend-rx79.onrender.com/api/user/pending",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -57,7 +57,7 @@ const MiContenido: React.FC = () => {
 
         // Obtener vistas
         const viewedResponse = await fetch(
-          "http://127.0.0.1:5000/api/user/viewed",
+          "https://flask-backend-rx79.onrender.com/api/user/viewed",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -95,8 +95,8 @@ const MiContenido: React.FC = () => {
   // Funciones para eliminar contenido
   const removeFromFavorites = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/remove-favorite`
-      : `http://127.0.0.1:5000/api/series/${id}/remove-favorite`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-favorite`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/remove-favorite`;
 
     await fetch(url, {
       method: "DELETE",
@@ -111,8 +111,8 @@ const MiContenido: React.FC = () => {
 
   const removeFromPending = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/remove-pending`
-      : `http://127.0.0.1:5000/api/series/${id}/remove-pending`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-pending`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/remove-pending`;
 
     await fetch(url, {
       method: "DELETE",
@@ -127,8 +127,8 @@ const MiContenido: React.FC = () => {
 
   const removeFromViewed = async (id: number, isMovie: boolean) => {
     const url = isMovie
-      ? `http://127.0.0.1:5000/api/movies/${id}/remove-viewed`
-      : `http://127.0.0.1:5000/api/series/${id}/remove-viewed`;
+      ? `https://flask-backend-rx79.onrender.com/api/movies/${id}/remove-viewed`
+      : `https://flask-backend-rx79.onrender.com/api/series/${id}/remove-viewed`;
 
     await fetch(url, {
       method: "DELETE",
