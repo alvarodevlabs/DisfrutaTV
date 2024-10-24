@@ -16,8 +16,8 @@ def create_app():
     app = Flask(__name__)
 
     # Cargar configuración de la aplicación
-    app.config.from_object('config.Config')
-
+    app.config.from_object('backend.config.Config')
+    
     # Configuración del servidor de correo
     app.config['MAIL_SERVER'] = 'smail.hostinsane.es'
     app.config['MAIL_PORT'] = 465
