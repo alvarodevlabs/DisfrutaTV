@@ -46,3 +46,8 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix='/auth')  # Registrar rutas de autenticación
 
     return app
+
+app = create_app()  # Crear la instancia de la aplicación
+
+if __name__ == "__main__":
+    app.run(debug=True)
