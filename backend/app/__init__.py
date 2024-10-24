@@ -38,6 +38,11 @@ def create_app():
         jti = jwt_payload["jti"]
         return jti in blacklist
 
+    # Añadir la ruta raíz
+    @app.route('/')
+    def index():
+        return "Backend is running!"
+
     # Importar y registrar los blueprints después de inicializar db
     from .routes import api_bp
     from .auth import auth_bp
