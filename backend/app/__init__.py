@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
 from flask_cors import CORS
+from .models import Configuration  # Asegúrate de importar el modelo Configuration
 
 # Inicializar las extensiones (sin app todavía)
 db = SQLAlchemy()
@@ -21,7 +22,7 @@ def create_app():
     # Configuración del servidor de correo
     app.config['MAIL_SERVER'] = 'smail.hostinsane.es'
     app.config['MAIL_PORT'] = 465
-    app.config['MAIL_USE_SSL'] = True  # Cambia MAIL_USE_TLS por MAIL_USE_SSL para el puerto 465
+    app.config['MAIL_USE_SSL'] = True
     app.config['MAIL_USERNAME'] = 'disfruta@hostinsane.es'
     app.config['MAIL_PASSWORD'] = '$YP-^DMoTB5q'
 
@@ -43,9 +44,8 @@ def create_app():
     def index():
         return "Backend is running!"
 
-    # Configurar la API Key de TheMovieDB si no está configurada
-    @app.before_first_request
-    def initialize_config():
+    # Inicializar la configuración si no existe
+    with app.app_context():
         config = Configuration.query.first()
         if not config:
             # Crea una nueva configuración con la API Key inicial
