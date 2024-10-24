@@ -4,7 +4,6 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
 from flask_cors import CORS
-from .models import Configuration  # Asegúrate de importar el modelo Configuration
 
 # Inicializar las extensiones (sin app todavía)
 db = SQLAlchemy()
@@ -43,6 +42,9 @@ def create_app():
     @app.route('/')
     def index():
         return "Backend is running!"
+
+    # Importar el modelo Configuration aquí para evitar la importación circular
+    from .models import Configuration
 
     # Inicializar la configuración si no existe
     with app.app_context():
