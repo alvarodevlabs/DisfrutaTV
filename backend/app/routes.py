@@ -1,9 +1,9 @@
 import requests
 from flask import Blueprint, jsonify, request
 from . import db
-from app.models import Configuration, Favorite, Pending, Viewed, User
+from .models import Configuration, Favorite, Pending, Viewed, User
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.utils import admin_required  # Importa 'utils' desde el paquete 'app'
+from .utils import admin_required  # Importa 'utils' desde el paquete 'app'
 
 # Definir el Blueprint
 api_bp = Blueprint('api', __name__)
@@ -312,8 +312,8 @@ def user_profile():
 # Rutas para eliminar de favoritos, pendientes y vistas
 
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.models import Favorite, Pending, Viewed
-from app import db
+from .models import Favorite, Pending, Viewed
+from . import db
 
 # Eliminar película de favoritos
 @api_bp.route('/movies/<int:movie_id>/remove-favorite', methods=['DELETE'])

@@ -40,7 +40,7 @@ def create_app():
 
     # Importar y registrar los blueprints después de inicializar db
     from .routes import api_bp
-    from app.auth import auth_bp
+    from .auth import auth_bp
 
     app.register_blueprint(api_bp, url_prefix='/api')  # Registrar rutas de API
     app.register_blueprint(auth_bp, url_prefix='/auth')  # Registrar rutas de autenticación

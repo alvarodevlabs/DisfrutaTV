@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, url_for, current_app
-from app import db, mail
-from app.models import User
+from . import db, mail
+from .models import User
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_mail import Message
 
