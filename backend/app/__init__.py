@@ -17,7 +17,7 @@ def create_app():
 
     # Cargar configuración de la aplicación
     app.config.from_object('backend.config.Config')
-    
+
     # Configuración del servidor de correo
     app.config['MAIL_SERVER'] = 'smail.hostinsane.es'
     app.config['MAIL_PORT'] = 465
@@ -39,7 +39,7 @@ def create_app():
         return jti in blacklist
 
     # Importar y registrar los blueprints después de inicializar db
-    from app.routes import api_bp
+    from .routes import api_bp
     from app.auth import auth_bp
 
     app.register_blueprint(api_bp, url_prefix='/api')  # Registrar rutas de API
