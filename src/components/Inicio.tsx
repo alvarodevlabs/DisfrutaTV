@@ -30,7 +30,7 @@ const Inicio: React.FC = () => {
       try {
         setLoading(true);
 
-        // Fetch movies
+        // Fetch peliculas
         const moviesResponse = await fetch(
           `http://127.0.0.1:5000/api/movies?page=${currentMoviePage}`,
           {

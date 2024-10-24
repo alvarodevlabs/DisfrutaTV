@@ -1,4 +1,3 @@
-// MiPerfil.tsx
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,7 +25,7 @@ const MiPerfil: React.FC = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Enviar token JWT
+            Authorization: `Bearer ${token}`,
           },
         });
 

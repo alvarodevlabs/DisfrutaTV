@@ -1,4 +1,3 @@
-// MiContenido.tsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -77,7 +76,7 @@ const MiContenido: React.FC = () => {
     };
 
     const fetchContentDetails = async (items: ContentItem[]) => {
-      const apiKey = "05902896074695709d7763505bb88b4d"; // Reemplaza con tu API Key
+      const apiKey = "05902896074695709d7763505bb88b4d";
       const promises = items.map(async (item) => {
         const { id, type } = item;
         const url =

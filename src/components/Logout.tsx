@@ -20,7 +20,7 @@ const Logout: React.FC = () => {
           console.error("Error al hacer logout:", error);
         }
       }
-      // Eliminar el token del localStorage
+
       localStorage.removeItem("token");
       navigate("/login");
     };

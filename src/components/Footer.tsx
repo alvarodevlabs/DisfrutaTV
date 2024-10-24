@@ -158,22 +158,16 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex space-x-4 mt-4 lg:mt-0">
             <Link
-              to="/terminos"
+              to="https://4geeks.com/"
               className="text-sm hover:text-purple-300 transition duration-200"
             >
               4Geeks
             </Link>
             <Link
-              to="/privacidad"
+              to="https://github.com/alvarodevlabs/DisfrutaTV"
               className="text-sm hover:text-purple-300 transition duration-200"
             >
               Github
-            </Link>
-            <Link
-              to="/ayuda"
-              className="text-sm hover:text-purple-300 transition duration-200"
-            >
-              LinkedIn
             </Link>
           </div>
         </div>

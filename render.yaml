@@ -1,0 +1,27 @@
+version: 1
+services:
+  - type: web
+    name: flask-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: disfrutatv
+    healthCheckPath: /
+    region: oregon
+
+  - type: web
+    name: react-frontend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /
+    region: oregon

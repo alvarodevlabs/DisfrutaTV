@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext"; // Importa AuthContext
-import { useNavigate, Link } from "react-router-dom"; // Añade Link
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Login: React.FC = () => {
-  const { login } = useContext(AuthContext); // Usa la función login del contexto
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -22,7 +22,7 @@ const Login: React.FC = () => {
       const data = await response.json();
       if (response.ok && data.access_token) {
         const token = data.access_token;
-        login(token); // Llama a la función login del contexto
+        login(token);
         navigate("/");
       } else {
         setError(data.error || "Credenciales incorrectas");
@@ -108,7 +108,7 @@ const Login: React.FC = () => {
 
           <div className="mt-6 text-center">
             <Link
-              to="/recuperar-contraseña" // Este es el enlace a la página de recuperación de contraseña
+              to="/recuperar-contraseña"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
               ¿Olvidaste tu contraseña?
