@@ -1,3 +1,17 @@
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+from flask_mail import Mail
+from flask_cors import CORS
+
+# Inicializar las extensiones (sin app todavía)
+db = SQLAlchemy()
+migrate = Migrate()
+jwt = JWTManager()
+mail = Mail()  # Inicializar Flask-Mail
+blacklist = set()  # Lista negra de tokens revocados
+
 def create_app():
     app = Flask(__name__)
 
@@ -18,17 +32,6 @@ def create_app():
     mail.init_app(app)  # Inicializar Mail
     CORS(app)
 
-    # Crear configuración inicial si no existe
-    with app.app_context():
-        from .models import Configuration
-        
-        config = Configuration.query.first()
-        if not config:
-            initial_api_key = '05902896074695709d7763505bb88b4d'  # La clave API inicial
-            config = Configuration(themoviedb_api_key=initial_api_key)
-            db.session.add(config)
-            db.session.commit()
-
     # Configurar el token_in_blocklist_loader
     @jwt.token_in_blocklist_loader
     def check_if_token_revoked(jwt_header, jwt_payload):
@@ -40,6 +43,18 @@ def create_app():
     def index():
         return "Backend is running!"
 
+    # Configurar la API Key de TheMovieDB si no está configurada
+    @app.before_first_request
+    def initialize_config():
+        config = Configuration.query.first()
+        if not config:
+            # Crea una nueva configuración con la API Key inicial
+            api_key = "05902896074695709d7763505bb88b4d"  # API Key inicial
+            new_config = Configuration(themoviedb_api_key=api_key)
+            db.session.add(new_config)
+            db.session.commit()
+            print("Configuración de TheMovieDB creada con la API Key inicial.")
+
     # Importar y registrar los blueprints después de inicializar db
     from .routes import api_bp
     from .auth import auth_bp
@@ -49,8 +64,7 @@ def create_app():
 
     return app
 
-
-app = create_app() 
+app = create_app()  # Crear la instancia de la aplicación
 
 if __name__ == "__main__":
     app.run(debug=True)
